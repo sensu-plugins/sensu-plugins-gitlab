@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format located [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+### Breaking Changes
+- Dropped `ruby 2.1` support (@yuri-zubov sponsored by Actility, https://www.actility.com)
+- Added `rest-client` as a dependency which requires you to have a local c compiler present to install this plugin (@yuri-zubov sponsored by Actility, https://www.actility.com)
+
+### Added
+- Added health-check for gitlab (@yuri-zubov sponsored by Actility, https://www.actility.com)
+￼
 ### Added
 - Added basic metrics from gitlab (@yuri-zubov sponsored by Actility, https://www.actility.com)
 
