@@ -4,8 +4,9 @@ language: ruby
 cache:
 - bundler
 before_install:
-  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
-  - gem install bundler -v 1.15
+- sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables
+  -N DOCKER )
+- gem install bundler -v 1.15
 install:
 - bundle install
 rvm:
@@ -19,19 +20,17 @@ notifications:
     on_success: change
     on_failure: always
 script:
-  - gem build sensu-plugins-skel.gemspec
-  - gem install sensu-plugins-skel-*.gem
-  - bundle exec rake quick
-  - bundle exec rake kitchen:ruby-`echo $TRAVIS_RUBY_VERSION | sed -e "s/\.//g"`-debian-8
+- gem build sensu-plugins-gitlab.gemspec
+- gem install sensu-plugins-gitlab-*.gem
+- bundle exec rake quick
+- bundle exec rake kitchen:ruby-`echo $TRAVIS_RUBY_VERSION | sed -e "s/\.//g"`-debian-8
 deploy:
   provider: rubygems
   api_key:
-    secure: <encrypted rubygems deploy key>
-  gem: sensu-plugins-skel
+    secure: rvqnPZy4dVbVeWn3A3ltafxSF9GPX+sxrsZwCLdu4AklNtDJxlqMrCoDy9twHnw1Jy3a9VPOVKtkWxCO2+WUt2XRutOF6+8/UEnabInlgPGXS5n3bYsKGZCYFBZ0z0EwJEOWVgyhln+Ip+UiLjTKhnjZU12Y/b8tN8lYMeUdH6MFltFcoisJtvyTOO9ghk72LVtjfLZD8y0rc5UbYpdMhPcL3rj5InsBRWFElBdByf7UxmAyYl7FWzvti50FJkJXRhdEksqGtYyZ6FItQXxNYffloVXB98jJAeLWoZtBNO/Rp0CAAFPol7XYalTkhBklmPoltlEdpKzGjOhtOIbkTwPM/KPRpx9h9D/q0DxQO2EGsELlEHU0rpauNZ2MbKDKzjMKFeCAHm5f40BPpQE5VL0Zeh5XPtAUQjT3PizXio0XIlCpiETY6oZDdXcf05Q7EF2yR2l/T2gkCENbdhG04OjE+hKdqpSiQMmgkeuLerHIxiups8YNlU2EHxGZ1iQtHRBE4ZrLmOVdiMdic+Cs2lg247OkRQTDBxZQbnKf6RVqFHcfrpTNJ8mBJrJ/TBDMcFcJBDqdamUzFQz0paNxm7mC5m1+4TjmPSkS3kLQSb2YYixWDk9Xb209am02UWIbGxKYeg6z99NCIsPmLkYgYA6vE2naqK4bM7ncIUU37mQ=
+  gem: sensu-plugins-gitlab
   on:
     tags: true
     all_branches: true
-    rvm: 2.2
-    rvm: 2.3.0
     rvm: 2.4.1
-    repo: sensu-plugins/sensu-plugins-skel
+    repo: sensu-plugins/sensu-plugins-gitlab
