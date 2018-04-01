@@ -1,6 +1,6 @@
-require_relative './spec_helper.rb'
-require_relative '../bin/check-health-gitlab'
-require_relative './fixtures.rb'
+require_relative '../spec_helper.rb'
+require_relative '../../bin/check-health-gitlab'
+require_relative '../fixtures/gitlab.rb'
 
 describe 'CheckHealthGitlab' do
   before do
